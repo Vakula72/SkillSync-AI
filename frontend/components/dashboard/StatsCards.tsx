@@ -16,10 +16,13 @@ interface StatCardProps {
   delay?: number;
 }
 
-function StatCard({ icon: Icon, label, value, sub, color, accentClass }: StatCardProps) {
+function StatCard({ icon: Icon, label, value, sub, color, accentClass, delay = 0 }: StatCardProps) {
   return (
-    <div
-      className={`glass-elevated glass-hover rounded-2xl p-5 transition-all duration-200 ${accentClass}`}
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, delay, ease: [0.2, 0.8, 0.2, 1] }}
+      className={`glass-elevated glass-hover rounded-[24px] p-5 transition-all duration-200 ${accentClass}`}
     >
       <div className="flex items-start justify-between mb-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${color} shadow-lg`}>
@@ -29,7 +32,7 @@ function StatCard({ icon: Icon, label, value, sub, color, accentClass }: StatCar
       <p className="text-2xl font-bold text-gray-100 mb-0.5">{value}</p>
       <p className="text-sm font-medium text-gray-400">{label}</p>
       {sub && <p className="text-xs text-gray-500 mt-1.5">{sub}</p>}
-    </div>
+    </motion.div>
   );
 }
 

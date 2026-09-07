@@ -77,6 +77,8 @@ export default function SkillGapChart({ sector = "all", limit = 10 }: Props) {
     }
   };
 
+  // The chart must refresh when its sector/limit props change.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { fetchData(); }, [sector, limit]);
 
   if (loading) {
@@ -108,7 +110,12 @@ export default function SkillGapChart({ sector = "all", limit = 10 }: Props) {
   }
 
   return (
-    <div className="glass-elevated rounded-2xl p-6">
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.65, ease: [0.2, 0.8, 0.2, 1] }}
+      className="glass-elevated rounded-[28px] p-5 sm:p-6"
+    >
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -166,17 +173,21 @@ export default function SkillGapChart({ sector = "all", limit = 10 }: Props) {
             fill={SECTOR_COLORS["Private Sector"]}
             radius={[4, 4, 0, 0]}
             maxBarSize={36}
-            isAnimationActive={false}
+            isAnimationActive={true}
+            animationDuration={900}
+            animationEasing="ease-out"
           />
           <Bar
             dataKey="Government"
             fill={SECTOR_COLORS["Government"]}
             radius={[4, 4, 0, 0]}
             maxBarSize={36}
-            isAnimationActive={false}
+            isAnimationActive={true}
+            animationDuration={1100}
+            animationEasing="ease-out"
           />
         </BarChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 }
