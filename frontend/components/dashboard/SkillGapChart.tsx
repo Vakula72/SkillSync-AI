@@ -48,33 +48,19 @@ interface Props {
   limit?: number;
 }
 
-const DEMO_GAP_DATA: SkillGapChartItem[] = [
-  { skill: "Docker & K8s", "Private Sector": 84, "Government": 32 },
-  { skill: "FastAPI / Python", "Private Sector": 76, "Government": 58 },
-  { skill: "React / Next.js", "Private Sector": 89, "Government": 41 },
-  { skill: "PostgreSQL & Vector", "Private Sector": 71, "Government": 62 },
-  { skill: "Cloud (AWS/GCP)", "Private Sector": 92, "Government": 36 },
-  { skill: "Cybersecurity & SIEM", "Private Sector": 64, "Government": 78 },
-  { skill: "CI/CD Pipelines", "Private Sector": 79, "Government": 25 },
-  { skill: "GenAI & LLMs", "Private Sector": 88, "Government": 18 },
-  { skill: "Data Structures", "Private Sector": 68, "Government": 82 },
-  { skill: "System Design", "Private Sector": 74, "Government": 38 },
-];
-
 export default function SkillGapChart({ sector = "all", limit = 10 }: Props) {
-  const [data, setData] = useState<SkillGapChartItem[]>(() => DEMO_GAP_DATA.slice(0, limit));
-  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<SkillGapChartItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const res = await api.dashboard.getGapAnalysis(sector, limit);
-      if (res.chart_data && res.chart_data.length > 0) {
-        setData(res.chart_data);
-      }
-    } catch {
-      // Fallback is already loaded
-    }
+      setData(res.chart_data ?? []);
+      setError(null);
+    } catch { setError("Skill gap data is unavailable right now."); }
+    finally { setLoading(false); }
   };
 
   // The chart must refresh when its sector/limit props change.
@@ -107,6 +93,10 @@ export default function SkillGapChart({ sector = "all", limit = 10 }: Props) {
         </div>
       </div>
     );
+  }
+
+  if (!data.length) {
+    return <div className="glass-elevated rounded-2xl p-6 h-80 flex items-center justify-center text-center"><p className="text-sm text-gray-400">No skill gap data is available for this view yet.</p></div>;
   }
 
   return (
