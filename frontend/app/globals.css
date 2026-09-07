@@ -105,7 +105,19 @@ body {
 .animate-fade-in-up { animation: fade-in-up .7s cubic-bezier(.2,.8,.2,1) both; }
 .noise-overlay::before { content: ""; position: fixed; inset: 0; z-index: 0; opacity: .018; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 200px 200px; }
 .apple-home { color: #1d1d1f; background: #f5f5f7; }
+.apple-home > section { width: min(calc(100% - 32px), 1180px); margin-inline: auto; }
+.apple-home > section:first-of-type { padding-inline: 0; }
+.apple-home .hero-title { max-width: 940px; margin-inline: auto; font-size: clamp(3rem, 6vw, 5.8rem); line-height: .98; letter-spacing: -.065em; }
+.apple-home .hero-copy { max-width: 760px; margin-inline: auto; }
+.apple-home .btn-secondary { color: #1d1d1f; border-color: rgba(0,0,0,.14); background: rgba(255,255,255,.62); }
+.apple-home .btn-secondary:hover { color: #1d1d1f; background: #fff; border-color: rgba(0,0,0,.25); }
+.apple-home .hero-stats { width: min(100%, 900px); margin-inline: auto; }
+.apple-home section:nth-of-type(2), .apple-home section:nth-of-type(3) { width: min(calc(100% - 32px), 1180px); }
+.apple-home section:nth-of-type(2) .glass, .apple-home section:nth-of-type(3) .glass { min-height: 286px; }
+.apple-home section:nth-of-type(2) h2, .apple-home section:nth-of-type(3) h2 { letter-spacing: -.045em; }
 .apple-home .hero-title { color: #1d1d1f; text-shadow: 0 10px 35px rgba(0,0,0,.08); }
+.apple-home .gradient-text { background: linear-gradient(105deg, #0071e3 8%, #5e5ce6 58%, #bf5af2 100%); -webkit-background-clip: text; background-clip: text; }
+.apple-home .gradient-text-brand { background: linear-gradient(105deg, #0071e3, #5e5ce6); -webkit-background-clip: text; background-clip: text; }
 .apple-home .hero-copy { color: #6e6e73; }
 .apple-home .hero-stats { background: rgba(255,255,255,.78); border-color: rgba(0,0,0,.08); box-shadow: 0 16px 50px rgba(0,0,0,.08); }
 .apple-home .hero-stats .text-gray-400 { color: #6e6e73; }
