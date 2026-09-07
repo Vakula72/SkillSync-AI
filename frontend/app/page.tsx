@@ -18,7 +18,7 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="relative overflow-hidden">
+    <div className="apple-home relative overflow-hidden">
       {/* Floating gradient orbs for hero depth */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-violet-600/8 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-40 right-1/4 w-80 h-80 bg-blue-600/6 rounded-full blur-3xl pointer-events-none" />
@@ -42,7 +42,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 max-w-5xl mx-auto"
+          className="hero-title text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 max-w-5xl mx-auto"
         >
           Bridge the Gap Between{" "}
           <span className="gradient-text">Academia & Industry</span>
@@ -53,7 +53,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-base sm:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-normal"
+          className="hero-copy text-base sm:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-normal"
         >
           Vidyavani analyses real-time job postings from private tech giants and government portals,
           maps them against NSQF curricula using Knowledge Graphs, and tells you{" "}
@@ -89,7 +89,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 p-6 rounded-2xl glass-elevated"
+          className="hero-stats grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 p-6 rounded-[28px] glass-elevated"
         >
           {[
             { value: "1.5Cr+", label: "NSQF graduates/year" },
@@ -134,7 +134,7 @@ export default function HomePage() {
             >
               <Link
                 href={feat.href}
-                className="group flex flex-col justify-between glass glass-hover rounded-2xl p-6 h-full"
+                className="group flex flex-col justify-between glass glass-hover rounded-[28px] p-6 h-full"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
